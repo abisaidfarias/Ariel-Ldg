@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b69c6d42a244e47ac4ea7185e370a29" Name="Diagram1">
+        <EntityTypeShape EntityType="IzyMarketingV1Model.AspNetRoles" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.AspNetUsers" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.AuditLogDetails" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.AuditLogs" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Campaigns" Width="1.5" PointX="8.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Companies" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.CompositionSegments" Width="1.5" PointX="15.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.EmailTestings" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.EventMetricDetails" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.EventMetrics" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.EventMetricSingles" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Images" Width="1.5" PointX="10.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.ListEmailTestings" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.RecipientLists" Width="1.5" PointX="3" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Segments" Width="1.5" PointX="13.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Senders" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Tags" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.Templates" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="IzyMarketingV1Model.UploadedFiles" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_AspNetUsers_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_Campaigns_Campaigns" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Campaigns_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Campaigns_dbo_Senders_SenderId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Images_dbo_Campaigns_CampaignId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Images_dbo_Companies_Company_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_ListEmailTestings_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_RecipientLists_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Segments_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Senders_dbo_Companies_Company_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Templates_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_UploadedFiles_dbo_Companies_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_CompositionSegments_dbo_Segments_SegmentId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.FK_dbo_Tags_dbo_RecipientLists_RecipientListId" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.SegmentCampaigns" ManuallyRouted="false" />
+        <AssociationConnector Association="IzyMarketingV1Model.SegmentRecipientLists" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

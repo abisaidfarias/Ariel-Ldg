@@ -1,0 +1,1717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IzyMarketingV1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditLogDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="OriginalValue" Type="nvarchar(max)" />
+          <Property Name="NewValue" Type="nvarchar(max)" />
+          <Property Name="AuditLogId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditLogs">
+          <Key>
+            <PropertyRef Name="AuditLogId" />
+          </Key>
+          <Property Name="AuditLogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="EventDateUTC" Type="datetime" Nullable="false" />
+          <Property Name="EventType" Type="int" Nullable="false" />
+          <Property Name="TypeFullName" Type="nvarchar" MaxLength="512" Nullable="false" />
+          <Property Name="RecordId" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="SentDate" Type="datetime" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="WasSent" Type="bit" Nullable="false" />
+          <Property Name="Template" Type="nvarchar(max)" />
+          <Property Name="HtmlContent" Type="nvarchar(max)" />
+          <Property Name="PathImages" Type="nvarchar(max)" />
+          <Property Name="TotalSent" Type="int" Nullable="false" />
+          <Property Name="MailerKey" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="SenderId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Route" Type="nvarchar(max)" />
+          <Property Name="ApiKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PathFile" Type="nvarchar(max)" />
+          <Property Name="PathImage" Type="nvarchar(max)" />
+          <Property Name="PathTemplateImages" Type="nvarchar(max)" />
+          <Property Name="MailerUser" Type="nvarchar(max)" />
+          <Property Name="MailerPassword" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CompositionSegments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tag" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rule" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="SegmentId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailTestings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ListEmailTestingId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventMetricDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="EventMetricId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventMetrics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateEvent" Type="datetime" Nullable="false" />
+          <Property Name="TypeEvent" Type="nvarchar(max)" />
+          <Property Name="Campaign" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EventMetricSingles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="TimeStamp" Type="nvarchar(max)" />
+          <Property Name="SmtpId" Type="nvarchar(max)" />
+          <Property Name="Event" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="SgEventId" Type="nvarchar(max)" />
+          <Property Name="SgMessageId" Type="nvarchar(max)" />
+          <Property Name="UserAgent" Type="nvarchar(max)" />
+          <Property Name="Ip" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="AsmGroupId" Type="nvarchar(max)" />
+          <Property Name="CampaignId" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Size" Type="bigint" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" />
+          <Property Name="CampaignId" Type="bigint" />
+          <Property Name="CompanyId" Type="bigint" />
+          <Property Name="Company_CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="ListEmailTestings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecipientLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SegmentCampaigns">
+          <Key>
+            <PropertyRef Name="Segment_Id" />
+            <PropertyRef Name="Campaign_Id" />
+          </Key>
+          <Property Name="Segment_Id" Type="bigint" Nullable="false" />
+          <Property Name="Campaign_Id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SegmentRecipientLists">
+          <Key>
+            <PropertyRef Name="Segment_Id" />
+            <PropertyRef Name="RecipientList_Id" />
+          </Key>
+          <Property Name="Segment_Id" Type="bigint" Nullable="false" />
+          <Property Name="RecipientList_Id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Segments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsSync" Type="bit" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Senders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="Company_CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="RecipientListId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UploadedFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="FilePathError" Type="nvarchar(max)" />
+          <Property Name="Delimiter" Type="nvarchar(max)" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId">
+          <End Role="AuditLogs" Type="Self.AuditLogs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AuditLogDetails" Type="Self.AuditLogDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditLogs">
+              <PropertyRef Name="AuditLogId" />
+            </Principal>
+            <Dependent Role="AuditLogDetails">
+              <PropertyRef Name="AuditLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Senders_SenderId">
+          <End Role="Senders" Type="Self.Senders" Multiplicity="0..1" />
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Senders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CompositionSegments_dbo_Segments_SegmentId">
+          <End Role="Segments" Type="Self.Segments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CompositionSegments" Type="Self.CompositionSegments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompositionSegments">
+              <PropertyRef Name="SegmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId">
+          <End Role="ListEmailTestings" Type="Self.ListEmailTestings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmailTestings" Type="Self.EmailTestings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListEmailTestings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmailTestings">
+              <PropertyRef Name="ListEmailTestingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId">
+          <End Role="EventMetrics" Type="Self.EventMetrics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EventMetricDetails" Type="Self.EventMetricDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventMetrics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventMetricDetails">
+              <PropertyRef Name="EventMetricId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Images_dbo_Campaigns_CampaignId">
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Images_dbo_Companies_Company_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="Company_CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ListEmailTestings_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListEmailTestings" Type="Self.ListEmailTestings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ListEmailTestings">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RecipientLists_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RecipientLists" Type="Self.RecipientLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="RecipientLists">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SegmentCampaigns_dbo_Campaigns_Campaign_Id">
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SegmentCampaigns" Type="Self.SegmentCampaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SegmentCampaigns">
+              <PropertyRef Name="Campaign_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SegmentCampaigns_dbo_Segments_Segment_Id">
+          <End Role="Segments" Type="Self.Segments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SegmentCampaigns" Type="Self.SegmentCampaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SegmentCampaigns">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SegmentRecipientLists_dbo_RecipientLists_RecipientList_Id">
+          <End Role="RecipientLists" Type="Self.RecipientLists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SegmentRecipientLists" Type="Self.SegmentRecipientLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipientLists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SegmentRecipientLists">
+              <PropertyRef Name="RecipientList_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SegmentRecipientLists_dbo_Segments_Segment_Id">
+          <End Role="Segments" Type="Self.Segments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SegmentRecipientLists" Type="Self.SegmentRecipientLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SegmentRecipientLists">
+              <PropertyRef Name="Segment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Segments_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Segments" Type="Self.Segments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Segments">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Senders_dbo_Companies_Company_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Senders" Type="Self.Senders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Senders">
+              <PropertyRef Name="Company_CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Tags_dbo_RecipientLists_RecipientListId">
+          <End Role="RecipientLists" Type="Self.RecipientLists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipientLists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tags">
+              <PropertyRef Name="RecipientListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Templates_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Templates" Type="Self.Templates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Templates">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UploadedFiles_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UploadedFiles" Type="Self.UploadedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="UploadedFiles">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IzyMarketingV1ModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditLogDetails" EntityType="Self.AuditLogDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditLogs" EntityType="Self.AuditLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Campaigns" EntityType="Self.Campaigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompositionSegments" EntityType="Self.CompositionSegments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailTestings" EntityType="Self.EmailTestings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventMetricDetails" EntityType="Self.EventMetricDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventMetrics" EntityType="Self.EventMetrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventMetricSingles" EntityType="Self.EventMetricSingles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListEmailTestings" EntityType="Self.ListEmailTestings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecipientLists" EntityType="Self.RecipientLists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SegmentCampaigns" EntityType="Self.SegmentCampaigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SegmentRecipientLists" EntityType="Self.SegmentRecipientLists" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Segments" EntityType="Self.Segments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Senders" EntityType="Self.Senders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Templates" EntityType="Self.Templates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UploadedFiles" EntityType="Self.UploadedFiles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Companies_CompanyId" Association="Self.FK_dbo_AspNetUsers_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId" Association="Self.FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId">
+            <End Role="AuditLogs" EntitySet="AuditLogs" />
+            <End Role="AuditLogDetails" EntitySet="AuditLogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Companies_CompanyId" Association="Self.FK_dbo_Campaigns_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Senders_SenderId" Association="Self.FK_dbo_Campaigns_dbo_Senders_SenderId">
+            <End Role="Senders" EntitySet="Senders" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CompositionSegments_dbo_Segments_SegmentId" Association="Self.FK_dbo_CompositionSegments_dbo_Segments_SegmentId">
+            <End Role="Segments" EntitySet="Segments" />
+            <End Role="CompositionSegments" EntitySet="CompositionSegments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId" Association="Self.FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId">
+            <End Role="ListEmailTestings" EntitySet="ListEmailTestings" />
+            <End Role="EmailTestings" EntitySet="EmailTestings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId" Association="Self.FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId">
+            <End Role="EventMetrics" EntitySet="EventMetrics" />
+            <End Role="EventMetricDetails" EntitySet="EventMetricDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Images_dbo_Campaigns_CampaignId" Association="Self.FK_dbo_Images_dbo_Campaigns_CampaignId">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Images_dbo_Companies_Company_CompanyId" Association="Self.FK_dbo_Images_dbo_Companies_Company_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ListEmailTestings_dbo_Companies_CompanyId" Association="Self.FK_dbo_ListEmailTestings_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="ListEmailTestings" EntitySet="ListEmailTestings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RecipientLists_dbo_Companies_CompanyId" Association="Self.FK_dbo_RecipientLists_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="RecipientLists" EntitySet="RecipientLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SegmentCampaigns_dbo_Campaigns_Campaign_Id" Association="Self.FK_dbo_SegmentCampaigns_dbo_Campaigns_Campaign_Id">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="SegmentCampaigns" EntitySet="SegmentCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SegmentCampaigns_dbo_Segments_Segment_Id" Association="Self.FK_dbo_SegmentCampaigns_dbo_Segments_Segment_Id">
+            <End Role="Segments" EntitySet="Segments" />
+            <End Role="SegmentCampaigns" EntitySet="SegmentCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SegmentRecipientLists_dbo_RecipientLists_RecipientList_Id" Association="Self.FK_dbo_SegmentRecipientLists_dbo_RecipientLists_RecipientList_Id">
+            <End Role="RecipientLists" EntitySet="RecipientLists" />
+            <End Role="SegmentRecipientLists" EntitySet="SegmentRecipientLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SegmentRecipientLists_dbo_Segments_Segment_Id" Association="Self.FK_dbo_SegmentRecipientLists_dbo_Segments_Segment_Id">
+            <End Role="Segments" EntitySet="Segments" />
+            <End Role="SegmentRecipientLists" EntitySet="SegmentRecipientLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Segments_dbo_Companies_CompanyId" Association="Self.FK_dbo_Segments_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Segments" EntitySet="Segments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Senders_dbo_Companies_Company_CompanyId" Association="Self.FK_dbo_Senders_dbo_Companies_Company_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Senders" EntitySet="Senders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Tags_dbo_RecipientLists_RecipientListId" Association="Self.FK_dbo_Tags_dbo_RecipientLists_RecipientListId">
+            <End Role="RecipientLists" EntitySet="RecipientLists" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Templates_dbo_Companies_CompanyId" Association="Self.FK_dbo_Templates_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Templates" EntitySet="Templates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UploadedFiles_dbo_Companies_CompanyId" Association="Self.FK_dbo_UploadedFiles_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="UploadedFiles" EntitySet="UploadedFiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IzyMarketingV1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_AspNetUsers_dbo_Companies_CompanyId" FromRole="AspNetUsers" ToRole="Companies" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AuditLogDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OriginalValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AuditLogId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AuditLogs" Relationship="Self.FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId" FromRole="AuditLogDetails" ToRole="AuditLogs" />
+        </EntityType>
+        <EntityType Name="AuditLogs">
+          <Key>
+            <PropertyRef Name="AuditLogId" />
+          </Key>
+          <Property Name="AuditLogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventDateUTC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventType" Type="Int32" Nullable="false" />
+          <Property Name="TypeFullName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RecordId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AuditLogDetails" Relationship="Self.FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId" FromRole="AuditLogs" ToRole="AuditLogDetails" />
+        </EntityType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WasSent" Type="Boolean" Nullable="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HtmlContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PathImages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="TotalSent" Type="Int32" Nullable="false" />
+          <Property Name="SenderId" Type="Int64" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Campaigns1" Relationship="Self.FK_Campaigns_Campaigns" FromRole="Campaigns" ToRole="Campaigns1" />
+          <NavigationProperty Name="Campaigns2" Relationship="Self.FK_Campaigns_Campaigns" FromRole="Campaigns1" ToRole="Campaigns" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Campaigns_dbo_Companies_CompanyId" FromRole="Campaigns" ToRole="Companies" />
+          <NavigationProperty Name="Senders" Relationship="Self.FK_dbo_Campaigns_dbo_Senders_SenderId" FromRole="Campaigns" ToRole="Senders" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_dbo_Images_dbo_Campaigns_CampaignId" FromRole="Campaigns" ToRole="Images" />
+          <NavigationProperty Name="Segments" Relationship="Self.SegmentCampaigns" FromRole="Campaigns" ToRole="Segments" />
+          <Property Name="MailerKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Route" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApiKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PathFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PathImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PathTemplateImages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUsers_dbo_Companies_CompanyId" FromRole="Companies" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Campaigns" Relationship="Self.FK_dbo_Campaigns_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Campaigns" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_dbo_Images_dbo_Companies_Company_CompanyId" FromRole="Companies" ToRole="Images" />
+          <NavigationProperty Name="ListEmailTestings" Relationship="Self.FK_dbo_ListEmailTestings_dbo_Companies_CompanyId" FromRole="Companies" ToRole="ListEmailTestings" />
+          <NavigationProperty Name="RecipientLists" Relationship="Self.FK_dbo_RecipientLists_dbo_Companies_CompanyId" FromRole="Companies" ToRole="RecipientLists" />
+          <NavigationProperty Name="Segments" Relationship="Self.FK_dbo_Segments_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Segments" />
+          <NavigationProperty Name="Senders" Relationship="Self.FK_dbo_Senders_dbo_Companies_Company_CompanyId" FromRole="Companies" ToRole="Senders" />
+          <NavigationProperty Name="Templates" Relationship="Self.FK_dbo_Templates_dbo_Companies_CompanyId" FromRole="Companies" ToRole="Templates" />
+          <NavigationProperty Name="UploadedFiles" Relationship="Self.FK_dbo_UploadedFiles_dbo_Companies_CompanyId" FromRole="Companies" ToRole="UploadedFiles" />
+          <Property Name="MailerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MailerPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CompositionSegments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rule" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="SegmentId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Segments" Relationship="Self.FK_dbo_CompositionSegments_dbo_Segments_SegmentId" FromRole="CompositionSegments" ToRole="Segments" />
+        </EntityType>
+        <EntityType Name="EmailTestings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ListEmailTestingId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ListEmailTestings" Relationship="Self.FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId" FromRole="EmailTestings" ToRole="ListEmailTestings" />
+        </EntityType>
+        <EntityType Name="EventMetricDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventMetricId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="EventMetrics" Relationship="Self.FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId" FromRole="EventMetricDetails" ToRole="EventMetrics" />
+        </EntityType>
+        <EntityType Name="EventMetrics">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateEvent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Campaign" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EventMetricDetails" Relationship="Self.FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId" FromRole="EventMetrics" ToRole="EventMetricDetails" />
+        </EntityType>
+        <EntityType Name="EventMetricSingles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Event" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SgEventId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SgMessageId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AsmGroupId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CampaignId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Size" Type="Int64" Nullable="false" />
+          <Property Name="CampaignId" Type="Int64" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int64" />
+          <Property Name="Company_CompanyId" Type="Int32" />
+          <NavigationProperty Name="Campaigns" Relationship="Self.FK_dbo_Images_dbo_Campaigns_CampaignId" FromRole="Images" ToRole="Campaigns" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Images_dbo_Companies_Company_CompanyId" FromRole="Images" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="ListEmailTestings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_ListEmailTestings_dbo_Companies_CompanyId" FromRole="ListEmailTestings" ToRole="Companies" />
+          <NavigationProperty Name="EmailTestings" Relationship="Self.FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId" FromRole="ListEmailTestings" ToRole="EmailTestings" />
+        </EntityType>
+        <EntityType Name="RecipientLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_RecipientLists_dbo_Companies_CompanyId" FromRole="RecipientLists" ToRole="Companies" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_dbo_Tags_dbo_RecipientLists_RecipientListId" FromRole="RecipientLists" ToRole="Tags" />
+          <NavigationProperty Name="Segments" Relationship="Self.SegmentRecipientLists" FromRole="RecipientLists" ToRole="Segments" />
+        </EntityType>
+        <EntityType Name="Segments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Segments_dbo_Companies_CompanyId" FromRole="Segments" ToRole="Companies" />
+          <NavigationProperty Name="CompositionSegments" Relationship="Self.FK_dbo_CompositionSegments_dbo_Segments_SegmentId" FromRole="Segments" ToRole="CompositionSegments" />
+          <NavigationProperty Name="Campaigns" Relationship="Self.SegmentCampaigns" FromRole="Segments" ToRole="Campaigns" />
+          <NavigationProperty Name="RecipientLists" Relationship="Self.SegmentRecipientLists" FromRole="Segments" ToRole="RecipientLists" />
+          <Property Name="IsSync" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Senders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="Company_CompanyId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Campaigns" Relationship="Self.FK_dbo_Campaigns_dbo_Senders_SenderId" FromRole="Senders" ToRole="Campaigns" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Senders_dbo_Companies_Company_CompanyId" FromRole="Senders" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="RecipientListId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="RecipientLists" Relationship="Self.FK_dbo_Tags_dbo_RecipientLists_RecipientListId" FromRole="Tags" ToRole="RecipientLists" />
+        </EntityType>
+        <EntityType Name="Templates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_Templates_dbo_Companies_CompanyId" FromRole="Templates" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="UploadedFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FilePathError" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Delimiter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_dbo_UploadedFiles_dbo_Companies_CompanyId" FromRole="UploadedFiles" ToRole="Companies" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUsers_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId">
+          <End Role="AuditLogs" Type="Self.AuditLogs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AuditLogDetails" Type="Self.AuditLogDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditLogs">
+              <PropertyRef Name="AuditLogId" />
+            </Principal>
+            <Dependent Role="AuditLogDetails">
+              <PropertyRef Name="AuditLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Campaigns_Campaigns">
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="1" />
+          <End Role="Campaigns1" Type="Self.Campaigns" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campaigns1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Senders_SenderId">
+          <End Role="Senders" Type="Self.Senders" Multiplicity="0..1" />
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Senders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="SenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Images_dbo_Campaigns_CampaignId">
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Images_dbo_Companies_Company_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="Company_CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ListEmailTestings_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ListEmailTestings" Type="Self.ListEmailTestings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ListEmailTestings">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RecipientLists_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RecipientLists" Type="Self.RecipientLists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="RecipientLists">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Segments_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Segments" Type="Self.Segments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Segments">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Senders_dbo_Companies_Company_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Senders" Type="Self.Senders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Senders">
+              <PropertyRef Name="Company_CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Templates_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="Templates" Type="Self.Templates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Templates">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UploadedFiles_dbo_Companies_CompanyId">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UploadedFiles" Type="Self.UploadedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="UploadedFiles">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CompositionSegments_dbo_Segments_SegmentId">
+          <End Role="Segments" Type="Self.Segments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CompositionSegments" Type="Self.CompositionSegments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Segments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompositionSegments">
+              <PropertyRef Name="SegmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId">
+          <End Role="ListEmailTestings" Type="Self.ListEmailTestings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmailTestings" Type="Self.EmailTestings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListEmailTestings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmailTestings">
+              <PropertyRef Name="ListEmailTestingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId">
+          <End Role="EventMetrics" Type="Self.EventMetrics" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EventMetricDetails" Type="Self.EventMetricDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventMetrics">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventMetricDetails">
+              <PropertyRef Name="EventMetricId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Tags_dbo_RecipientLists_RecipientListId">
+          <End Role="RecipientLists" Type="Self.RecipientLists" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecipientLists">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tags">
+              <PropertyRef Name="RecipientListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <Association Name="SegmentCampaigns">
+          <End Role="Campaigns" Type="Self.Campaigns" Multiplicity="*" />
+          <End Role="Segments" Type="Self.Segments" Multiplicity="*" />
+        </Association>
+        <Association Name="SegmentRecipientLists">
+          <End Role="RecipientLists" Type="Self.RecipientLists" Multiplicity="*" />
+          <End Role="Segments" Type="Self.Segments" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MailerLogContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="AuditLogDetails" EntityType="Self.AuditLogDetails" />
+          <EntitySet Name="AuditLogs" EntityType="Self.AuditLogs" />
+          <EntitySet Name="Campaigns" EntityType="Self.Campaigns" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" />
+          <EntitySet Name="CompositionSegments" EntityType="Self.CompositionSegments" />
+          <EntitySet Name="EmailTestings" EntityType="Self.EmailTestings" />
+          <EntitySet Name="EventMetricDetails" EntityType="Self.EventMetricDetails" />
+          <EntitySet Name="EventMetrics" EntityType="Self.EventMetrics" />
+          <EntitySet Name="EventMetricSingles" EntityType="Self.EventMetricSingles" />
+          <EntitySet Name="Images" EntityType="Self.Images" />
+          <EntitySet Name="ListEmailTestings" EntityType="Self.ListEmailTestings" />
+          <EntitySet Name="RecipientLists" EntityType="Self.RecipientLists" />
+          <EntitySet Name="Segments" EntityType="Self.Segments" />
+          <EntitySet Name="Senders" EntityType="Self.Senders" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="Templates" EntityType="Self.Templates" />
+          <EntitySet Name="UploadedFiles" EntityType="Self.UploadedFiles" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_Companies_CompanyId" Association="Self.FK_dbo_AspNetUsers_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId" Association="Self.FK_dbo_AuditLogDetails_dbo_AuditLogs_AuditLogId">
+            <End Role="AuditLogs" EntitySet="AuditLogs" />
+            <End Role="AuditLogDetails" EntitySet="AuditLogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Campaigns_Campaigns" Association="Self.FK_Campaigns_Campaigns">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Campaigns1" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Companies_CompanyId" Association="Self.FK_dbo_Campaigns_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Senders_SenderId" Association="Self.FK_dbo_Campaigns_dbo_Senders_SenderId">
+            <End Role="Senders" EntitySet="Senders" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Images_dbo_Campaigns_CampaignId" Association="Self.FK_dbo_Images_dbo_Campaigns_CampaignId">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Images_dbo_Companies_Company_CompanyId" Association="Self.FK_dbo_Images_dbo_Companies_Company_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ListEmailTestings_dbo_Companies_CompanyId" Association="Self.FK_dbo_ListEmailTestings_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="ListEmailTestings" EntitySet="ListEmailTestings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RecipientLists_dbo_Companies_CompanyId" Association="Self.FK_dbo_RecipientLists_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="RecipientLists" EntitySet="RecipientLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Segments_dbo_Companies_CompanyId" Association="Self.FK_dbo_Segments_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Segments" EntitySet="Segments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Senders_dbo_Companies_Company_CompanyId" Association="Self.FK_dbo_Senders_dbo_Companies_Company_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Senders" EntitySet="Senders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Templates_dbo_Companies_CompanyId" Association="Self.FK_dbo_Templates_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Templates" EntitySet="Templates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UploadedFiles_dbo_Companies_CompanyId" Association="Self.FK_dbo_UploadedFiles_dbo_Companies_CompanyId">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="UploadedFiles" EntitySet="UploadedFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CompositionSegments_dbo_Segments_SegmentId" Association="Self.FK_dbo_CompositionSegments_dbo_Segments_SegmentId">
+            <End Role="Segments" EntitySet="Segments" />
+            <End Role="CompositionSegments" EntitySet="CompositionSegments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId" Association="Self.FK_dbo_EmailTestings_dbo_ListEmailTestings_ListEmailTestingId">
+            <End Role="ListEmailTestings" EntitySet="ListEmailTestings" />
+            <End Role="EmailTestings" EntitySet="EmailTestings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId" Association="Self.FK_dbo_EventMetricDetails_dbo_EventMetrics_EventMetricId">
+            <End Role="EventMetrics" EntitySet="EventMetrics" />
+            <End Role="EventMetricDetails" EntitySet="EventMetricDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Tags_dbo_RecipientLists_RecipientListId" Association="Self.FK_dbo_Tags_dbo_RecipientLists_RecipientListId">
+            <End Role="RecipientLists" EntitySet="RecipientLists" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="SegmentCampaigns" Association="Self.SegmentCampaigns">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Segments" EntitySet="Segments" />
+          </AssociationSet>
+          <AssociationSet Name="SegmentRecipientLists" Association="Self.SegmentRecipientLists">
+            <End Role="RecipientLists" EntitySet="RecipientLists" />
+            <End Role="Segments" EntitySet="Segments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IzyMarketingV1ModelStoreContainer" CdmEntityContainer="MailerLogContext">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditLogDetails">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.AuditLogDetails">
+              <MappingFragment StoreEntitySet="AuditLogDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="OriginalValue" ColumnName="OriginalValue" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="AuditLogId" ColumnName="AuditLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditLogs">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.AuditLogs">
+              <MappingFragment StoreEntitySet="AuditLogs">
+                <ScalarProperty Name="AuditLogId" ColumnName="AuditLogId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EventDateUTC" ColumnName="EventDateUTC" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="TypeFullName" ColumnName="TypeFullName" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Campaigns">
+              <MappingFragment StoreEntitySet="Campaigns">
+                <ScalarProperty Name="MailerKey" ColumnName="MailerKey" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="WasSent" ColumnName="WasSent" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="HtmlContent" ColumnName="HtmlContent" />
+                <ScalarProperty Name="PathImages" ColumnName="PathImages" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="TotalSent" ColumnName="TotalSent" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Companies">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="MailerPassword" ColumnName="MailerPassword" />
+                <ScalarProperty Name="MailerUser" ColumnName="MailerUser" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
+                <ScalarProperty Name="PathFile" ColumnName="PathFile" />
+                <ScalarProperty Name="PathImage" ColumnName="PathImage" />
+                <ScalarProperty Name="PathTemplateImages" ColumnName="PathTemplateImages" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompositionSegments">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.CompositionSegments">
+              <MappingFragment StoreEntitySet="CompositionSegments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Rule" ColumnName="Rule" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="SegmentId" ColumnName="SegmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailTestings">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.EmailTestings">
+              <MappingFragment StoreEntitySet="EmailTestings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ListEmailTestingId" ColumnName="ListEmailTestingId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventMetricDetails">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.EventMetricDetails">
+              <MappingFragment StoreEntitySet="EventMetricDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="EventMetricId" ColumnName="EventMetricId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventMetrics">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.EventMetrics">
+              <MappingFragment StoreEntitySet="EventMetrics">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateEvent" ColumnName="DateEvent" />
+                <ScalarProperty Name="Campaign" ColumnName="Campaign" />
+                <ScalarProperty Name="TypeEvent" ColumnName="TypeEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventMetricSingles">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.EventMetricSingles">
+              <MappingFragment StoreEntitySet="EventMetricSingles">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="SmtpId" ColumnName="SmtpId" />
+                <ScalarProperty Name="Event" ColumnName="Event" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SgEventId" ColumnName="SgEventId" />
+                <ScalarProperty Name="SgMessageId" ColumnName="SgMessageId" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="AsmGroupId" ColumnName="AsmGroupId" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="CampaignId" ColumnName="CampaignId" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Company_CompanyId" ColumnName="Company_CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListEmailTestings">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.ListEmailTestings">
+              <MappingFragment StoreEntitySet="ListEmailTestings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecipientLists">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.RecipientLists">
+              <MappingFragment StoreEntitySet="RecipientLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Segments">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Segments">
+              <MappingFragment StoreEntitySet="Segments">
+                <ScalarProperty Name="IsSync" ColumnName="IsSync" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Senders">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Senders">
+              <MappingFragment StoreEntitySet="Senders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Company_CompanyId" ColumnName="Company_CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="RecipientListId" ColumnName="RecipientListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Templates">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.Templates">
+              <MappingFragment StoreEntitySet="Templates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UploadedFiles">
+            <EntityTypeMapping TypeName="IzyMarketingV1Model.UploadedFiles">
+              <MappingFragment StoreEntitySet="UploadedFiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FilePathError" ColumnName="FilePathError" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Delimiter" ColumnName="Delimiter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="IzyMarketingV1Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SegmentCampaigns" TypeName="IzyMarketingV1Model.SegmentCampaigns" StoreEntitySet="SegmentCampaigns">
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Id" ColumnName="Campaign_Id" />
+            </EndProperty>
+            <EndProperty Name="Segments">
+              <ScalarProperty Name="Id" ColumnName="Segment_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SegmentRecipientLists" TypeName="IzyMarketingV1Model.SegmentRecipientLists" StoreEntitySet="SegmentRecipientLists">
+            <EndProperty Name="RecipientLists">
+              <ScalarProperty Name="Id" ColumnName="RecipientList_Id" />
+            </EndProperty>
+            <EndProperty Name="Segments">
+              <ScalarProperty Name="Id" ColumnName="Segment_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
